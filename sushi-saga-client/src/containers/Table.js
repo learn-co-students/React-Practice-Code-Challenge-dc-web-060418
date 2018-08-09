@@ -4,7 +4,7 @@ const Table = (props) => {
 
   const renderPlates = (array) => {
     return array.map((x, index) => {
-      return <div className="empty-plate" style={{ top: -7 * index }}/>
+      return <div className="empty-plate" style={{ top: -7 * index }} key={x.id}/>
     })
   }
 
@@ -13,6 +13,11 @@ const Table = (props) => {
       <h1 className="remaining">
         You have: ${props.wallet} remaining!
       </h1>
+      <h3>Add The Money Here!</h3>
+      <form onSubmit={(e) => props.addMoneyToWallet(e)}>
+        <input type="number" name="addAmount"></input>
+        <input type="submit"></input>
+      </form>
       <div className="table">
         <div className="stack">
           {renderPlates(props.eatenSushi)}

@@ -20,7 +20,7 @@ class Sushi extends Component {
     return(
       <div className="sushi">
         <div className="plate" onClick={() => this.eatSushi()}>
-          { this.state.eaten ? null : <img src={this.props.sushi.img_url} width="100%" /> }
+          { this.state.eaten ? null : <img src={this.props.sushi.img_url} alt={this.props.sushi.name} width="100%" /> }
         </div>
         <h4 className="sushi-details">
           {this.props.sushi.name} - ${this.props.sushi.price}

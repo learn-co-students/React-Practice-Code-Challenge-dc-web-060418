@@ -34,6 +34,12 @@ class App extends Component {
     }
   }
 
+  addMoneyToWallet = (e) => {
+    e.preventDefault()
+    // console.log(e.target.addAmount.value)
+    this.setState({wallet: this.state.wallet + parseInt(e.target.addAmount.value)})
+  }
+
   render() {
     return (
       <div className="app">
@@ -43,7 +49,11 @@ class App extends Component {
           ateSushi={this.addToEatenSushiList}
           currentWallet={this.state.wallet}
         />
-      <Table eatenSushi={this.state.eatenSushi} wallet={this.state.wallet}/>
+      <Table
+        eatenSushi={this.state.eatenSushi}
+        wallet={this.state.wallet}
+        addMoneyToWallet={this.addMoneyToWallet}
+      />
       </div>
     );
   }
