@@ -24,8 +24,12 @@ class App extends Component {
       })
   }
 
-  getMoreSushi = () => {
-    this.setState({sliceX: (this.state.sliceX + 4), sliceY: (this.state.sliceY + 4)})
+  handleSushiRotation = () => {
+    if (this.state.sliceY >= this.state.sushiList.length) {
+      this.setState({sliceX: 0, sliceY: 4})
+    } else {
+      this.setState({sliceX: (this.state.sliceX + 4), sliceY: (this.state.sliceY + 4)})
+    }
   }
 
   addToEatenSushiList = (sushi) => {
@@ -45,9 +49,10 @@ class App extends Component {
       <div className="app">
         <SushiContainer
           sushiList={this.state.sushiList.slice(this.state.sliceX, this.state.sliceY)}
-          moreButton={this.getMoreSushi}
+          moreButton={this.handleSushiRotation}
           ateSushi={this.addToEatenSushiList}
           currentWallet={this.state.wallet}
+          eatenSushi={this.state.eatenSushi}
         />
       <Table
         eatenSushi={this.state.eatenSushi}

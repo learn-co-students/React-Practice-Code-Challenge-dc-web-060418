@@ -13,6 +13,7 @@ const SushiContainer = (props) => {
               key={sushi.id}
               ateSushi={props.ateSushi}
               currentWallet={props.currentWallet}
+              eatenSushi={props.eatenSushi}
             />
           })
         }
