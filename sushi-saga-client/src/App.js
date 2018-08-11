@@ -28,13 +28,13 @@ class App extends Component {
       });
   }
 
-  eatSushi = price => {
-    let newAmountofMoney = this.state.customerMoney - price;
+  eatSushi = sushi => {
+    let newAmountofMoney = this.state.customerMoney - sushi.price;
     this.setState({
       customerMoney: newAmountofMoney
     });
     let sushiEaten = [...this.state.sushiEaten];
-    sushiEaten.push(1);
+    sushiEaten.push(sushi);
     this.setState({
       sushiEaten: sushiEaten
     });
@@ -67,10 +67,18 @@ class App extends Component {
     });
   };
 
+  add100 = () => {
+    this.setState({
+      customerMoney: this.state.customerMoney + 100
+    });
+  };
+
   render() {
     return (
       <div className="app">
         <SushiContainer
+          add100={this.add100}
+          sushiEaten={this.state.sushiEaten}
           customerMoney={this.state.customerMoney}
           eatSushi={this.eatSushi}
           moreSushi={this.moreSushi}

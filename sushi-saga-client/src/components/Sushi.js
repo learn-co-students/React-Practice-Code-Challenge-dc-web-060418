@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 
 class Sushi extends Component {
-  state = {
-    eaten: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      eaten: this.props.sushiEaten.includes(this.props.sushi) ? true : false
+    };
+  }
+
   render() {
     return (
       <div className="sushi">
@@ -12,7 +16,7 @@ class Sushi extends Component {
           onClick={() => {
             if (this.props.customerMoney >= this.props.sushi.price) {
               this.setState({ eaten: true });
-              this.props.eatSushi(this.props.sushi.price);
+              this.props.eatSushi(this.props.sushi);
             }
           }}
         >
